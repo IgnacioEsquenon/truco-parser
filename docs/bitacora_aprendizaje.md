@@ -64,7 +64,17 @@ Este documento registra las actividades, decisiones y aprendizajes del equipo du
 **Aprendizajes:**
 - La lectura del Capítulo 4 de [1] introdujo los conceptos de lexema, token y el funcionamiento de un escáner basado en expresiones regulares.
 
+**Tareas realizadas:**
+- Diseño de DFA para el Micro-Truco.
+- Implementación de DFA en Python.
+- Desarrollo de pruebas para verificar el funcionamiento del lexer.
 
+**Dificultades:**
+- Traslado de la teoría y lo aprendido a clase al desarrollo de código.
+
+**Aprendizajes:**
+- Comprensión de la necesidad de tener un DFA definido antes de comenzar a implementar el lexer.
+- Utilizar los metodos auxiliares para implementar el lexer correctamente.
 ---
 
 ### Sebastián Gómez (Desarrollador del parser)
