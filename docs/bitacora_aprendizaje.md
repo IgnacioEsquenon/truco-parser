@@ -50,6 +50,14 @@ Este documento registra las actividades, decisiones y aprendizajes del equipo du
 
 **Aprendizajes:**
 - Se identificaron las limitaciones iniciales de la gramática (terminación temprana, orden fijo envido-truco) que deberán revisarse antes de la implementación.
+
+**Tareas realizadas:**
+- Transición y adaptación de las reglas matemáticas clásicas hacia EBNF, incorporando operadores de opcionalidad (?) para optimizar y limpiar el diseño.
+- Estratificación de los no terminales en niveles jerárquicos (separando las fases de Envido y Truco) para asegurar que la gramática sea no ambigua y respete el orden de los cantos.
+
+**Aprendizajes:**
+- Se comprendió el principio de diseño por el cual una gramática no debe contemplar la generación de jugadas ilegales para manejarlas; por el contrario, debe restringirse a generar únicamente secuencias válidas, permitiendo que el analizador sintáctico rechace naturalmente las entradas incorrectas.
+- Se logró modelar con éxito la terminación temprana de una ronda sin introducir ambigüedad sintáctica, utilizando bifurcaciones estrictas que cierran el árbol de derivación de manera segura ante un rechazo.
 ---
 
 ### Geremias Castillo (Desarrollador del lexer)
