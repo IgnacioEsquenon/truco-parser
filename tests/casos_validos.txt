@@ -1,0 +1,67 @@
+# Casos válidos para el analizador de partidas de Truco
+# Gramática final (18/06): <partida> ::= <ronda> | <ronda> ";" <partida>
+
+# Ronda mínima (sin cantos)
+# (cadena vacía)
+
+# Envido simple
+envido quiero
+envido no_quiero
+
+# Envido con escalada
+envido envido quiero
+envido envido no_quiero
+envido real_envido quiero
+envido real_envido no_quiero
+envido real_envido falta_envido quiero
+envido real_envido falta_envido no_quiero
+real_envido quiero
+real_envido no_quiero
+real_envido falta_envido quiero
+real_envido falta_envido no_quiero
+falta_envido quiero
+falta_envido no_quiero
+
+# Truco simple
+truco quiero
+truco no_quiero
+
+# Truco con retruco
+truco retruco quiero
+truco retruco no_quiero
+
+# Truco con retruco y vale_cuatro
+truco retruco vale_cuatro quiero
+truco retruco vale_cuatro no_quiero
+
+# Ronda con envido y truco combinados
+envido quiero truco quiero
+envido no_quiero truco retruco no_quiero
+envido envido real_envido falta_envido no_quiero truco retruco vale_cuatro quiero
+
+# Partida con dos rondas
+truco quiero ; envido no_quiero
+envido quiero ; truco retruco no_quiero
+truco no_quiero ; envido envido real_envido falta_envido quiero truco quiero
+
+# Partida con tres rondas
+truco quiero ; envido no_quiero ; truco retruco vale_cuatro quiero
+envido quiero ; truco no_quiero ; envido envido quiero truco retruco no_quiero
+
+# Rondas sin cantos en medio (ronda vacía)
+truco quiero ; ; envido no_quiero
+
+# Casos con comentarios y espacios
+# Esto es un comentario
+truco quiero
+envido    quiero    ;    truco    no_quiero
+# Comentario entre rondas
+envido quiero ; # otra ronda
+truco no_quiero
+
+# Rondas vacías
+;
+; ;
+truco quiero ;
+; truco quiero
+truco quiero ; ; envido quiero

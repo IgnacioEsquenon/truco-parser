@@ -1,0 +1,26 @@
+# Casos inválidos para el analizador de partidas de Truco
+
+# Errores léxicos
+turco quiero
+truco quierox
+truco_quiero
+
+# Errores sintácticos en envido
+real_envido envido quiero
+envido envido envido quiero
+falta_envido real_envido no_quiero
+envido real_envido envido quiero
+
+# Errores sintácticos en truco
+retruco quiero
+vale_cuatro no_quiero
+truco vale_cuatro quiero
+truco retruco vale_cuatro vale_cuatro quiero
+truco truco quiero
+truco retruco truco
+
+# Errores de respuesta ausente
+truco
+envido
+truco retruco
+envido envido
