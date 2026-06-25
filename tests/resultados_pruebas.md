@@ -1,63 +1,61 @@
 # Resultados de las Pruebas del Analizador de Truco
 
-A continuación se presenta la tabla con los resultados obtenidos tras ejecutar el parser sobre los distintos casos de prueba de la gramática final:
-
 | Cadena de Entrada | Salida Esperada | Salida Obtenida | Estado |
 | :--- | :--- | :--- | :--- |
-| `(cadena vacía)` | `('partida', \[('ronda', None, None)\])` | `('partida', \[('ronda', None, None)\])` | Éxito |
-| `envido quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None)\])` | Éxito |
-| `envido no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None)\])` | Éxito |
-| `envido envido quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', ('re', 'quiero')))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', ('re', 'quiero')))), None)\])` | Éxito |
-| `envido envido no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', ('re', 'no_quiero')))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', ('re', 'no_quiero')))), None)\])` | Éxito |
-| `envido real_envido quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', ('re', 'quiero')))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', ('re', 'quiero')))), None)\])` | Éxito |
-| `envido real_envido no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', ('re', 'no_quiero')))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', ('re', 'no_quiero')))), None)\])` | Éxito |
-| `envido real_envido falta_envido quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', 'falta_envido', ('re', 'quiero')))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', 'falta_envido', ('re', 'quiero')))), None)\])` | Éxito |
-| `envido real_envido falta_envido no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', 'falta_envido', ('re', 'no_quiero')))), None)\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'real_envido', ('r3', 'falta_envido', ('re', 'no_quiero')))), None)\])` | Éxito |
-| `real_envido quiero` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', ('re', 'quiero'))), None)\])` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', ('re', 'quiero'))), None)\])` | Éxito |
-| `real_envido no_quiero` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', ('re', 'no_quiero'))), None)\])` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', ('re', 'no_quiero'))), None)\])` | Éxito |
-| `real_envido falta_envido quiero` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', 'falta_envido', ('re', 'quiero'))), None)\])` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', 'falta_envido', ('re', 'quiero'))), None)\])` | Éxito |
-| `real_envido falta_envido no_quiero` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', 'falta_envido', ('re', 'no_quiero'))), None)\])` | `('partida', \[('ronda', ('envido', 'real_envido', ('r3', 'falta_envido', ('re', 'no_quiero'))), None)\])` | Éxito |
-| `falta_envido quiero` | `('partida', \[('ronda', ('envido', 'falta_envido', ('re', 'quiero')), None)\])` | `('partida', \[('ronda', ('envido', 'falta_envido', ('re', 'quiero')), None)\])` | Éxito |
-| `falta_envido no_quiero` | `('partida', \[('ronda', ('envido', 'falta_envido', ('re', 'no_quiero')), None)\])` | `('partida', \[('ronda', ('envido', 'falta_envido', ('re', 'no_quiero')), None)\])` | Éxito |
-| `truco quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | Éxito |
-| `truco no_quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero'))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero'))))\])` | Éxito |
-| `truco retruco quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'quiero')))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'quiero')))))\])` | Éxito |
-| `truco retruco no_quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | Éxito |
-| `truco retruco vale_cuatro quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'quiero')))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'quiero')))))\])` | Éxito |
-| `truco retruco vale_cuatro no_quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'no_quiero')))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'no_quiero')))))\])` | Éxito |
-| `envido quiero truco quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | Éxito |
-| `envido no_quiero truco retruco no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | Éxito |
-| `envido envido real_envido falta_envido no_quiero truco retruco vale_cuatro quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', 'real_envido', ('r3', 'falta_envido', ('re', 'no_quiero'))))), ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'quiero')))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', 'real_envido', ('r3', 'falta_envido', ('re', 'no_quiero'))))), ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'quiero')))))\])` | Éxito |
-| `truco quiero ; envido no_quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None)\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None)\])` | Éxito |
-| `envido quiero ; truco retruco no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | Éxito |
-| `truco no_quiero ; envido envido real_envido falta_envido quiero truco quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero')))), ('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', 'real_envido', ('r3', 'falta_envido', ('re', 'quiero'))))), ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero')))), ('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', 'real_envido', ('r3', 'falta_envido', ('re', 'quiero'))))), ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | Éxito |
-| `truco quiero ; envido no_quiero ; truco retruco vale_cuatro quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'quiero')))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', 'retruco', ('rt1', 'vale_cuatro', ('re', 'quiero')))))\])` | Éxito |
-| `envido quiero ; truco no_quiero ; envido envido quiero truco retruco no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero')))), ('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', ('re', 'quiero')))), ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero')))), ('ronda', ('envido', 'envido', ('r1', 'envido', ('r2', ('re', 'quiero')))), ('truco', 'truco', ('rt', 'retruco', ('rt1', ('re', 'no_quiero')))))\])` | Éxito |
-| `truco quiero ; ; envido no_quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', None, None), ('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None)\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', None, None), ('ronda', ('envido', 'envido', ('r1', ('re', 'no_quiero'))), None)\])` | Éxito |
-| `# Esto es un comentario \n truco quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | Éxito |
-| `envido    quiero    ;    truco    no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero'))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero'))))\])` | Éxito |
-| `envido quiero ; # otra ronda \n truco no_quiero` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero'))))\])` | `('partida', \[('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'no_quiero'))))\])` | Éxito |
-| `;` | `('partida', \[('ronda', None, None), ('ronda', None, None)\])` | `('partida', \[('ronda', None, None), ('ronda', None, None)\])` | Éxito |
-| `; ;` | `('partida', \[('ronda', None, None), ('ronda', None, None), ('ronda', None, None)\])` | `('partida', \[('ronda', None, None), ('ronda', None, None), ('ronda', None, None)\])` | Éxito |
-| `truco quiero ;` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', None, None)\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', None, None)\])` | Éxito |
-| `; truco quiero` | `('partida', \[('ronda', None, None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | `('partida', \[('ronda', None, None), ('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero'))))\])` | Éxito |
-| `truco quiero ; ; envido quiero` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', None, None), ('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None)\])` | `('partida', \[('ronda', None, ('truco', 'truco', ('rt', ('re', 'quiero')))), ('ronda', None, None), ('ronda', ('envido', 'envido', ('r1', ('re', 'quiero'))), None)\])` | Éxito |
-| `turco quiero` | *Error Léxico esperado* | *[línea 1] Error léxico: Carácter o palabra no reconocida 'turco'* | Éxito |
-| `truco quierox` | *Error Léxico esperado* | *[línea 1] Error léxico: Carácter o palabra no reconocida 'quierox'* | Éxito |
-| `truco_quiero` | *Error Léxico esperado* | *[línea 1] Error léxico: Carácter o palabra no reconocida 'truco_quiero'* | Éxito |
-| `real_envido envido quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'envido')* | Éxito |
-| `envido envido envido quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba real_envido, falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'envido')* | Éxito |
-| `falta_envido real_envido no_quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'quiero' o 'no_quiero' (encontrado 'real_envido')* | Éxito |
-| `envido real_envido envido quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'envido')* | Éxito |
-| `retruco quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba fin de entrada pero hay tokens sobrantes (encontrado 'retruco')* | Éxito |
-| `vale_cuatro no_quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba fin de entrada pero hay tokens sobrantes (encontrado 'vale_cuatro')* | Éxito |
-| `truco vale_cuatro quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'retruco' o respuesta ('quiero'/'no_quiero') (encontrado 'vale_cuatro')* | Éxito |
-| `truco retruco vale_cuatro vale_cuatro quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'quiero' o 'no_quiero' (encontrado 'vale_cuatro')* | Éxito |
-| `truco truco quiero` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'retruco' o respuesta ('quiero'/'no_quiero') (encontrado 'truco')* | Éxito |
-| `truco retruco truco` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'vale_cuatro' o respuesta ('quiero'/'no_quiero') (encontrado 'truco')* | Éxito |
-| `truco` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'retruco' o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')* | Éxito |
-| `envido` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba envido, real_envido, falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')* | Éxito |
-| `truco retruco` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba 'vale_cuatro' o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')* | Éxito |
-| `envido envido` | *Error Sintáctico esperado* | *[línea 1] Error sintáctico: Se esperaba real_envido, falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')* | Éxito |
+| (cadena vacía) | AST de ronda vacía y mensaje de éxito | Coincide | Éxito |
+| `envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido real_envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido real_envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido real_envido falta_envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido real_envido falta_envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `real_envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `real_envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `real_envido falta_envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `real_envido falta_envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `falta_envido quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `falta_envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco retruco quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco retruco no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco retruco vale_cuatro quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco retruco vale_cuatro no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido quiero truco quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido no_quiero truco retruco no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido envido real_envido falta_envido no_quiero truco retruco vale_cuatro quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco quiero ; envido no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido quiero ; truco retruco no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco no_quiero ; envido envido real_envido falta_envido quiero truco quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco quiero ; envido no_quiero ; truco retruco vale_cuatro quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido quiero ; truco no_quiero ; envido envido quiero truco retruco no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `truco quiero ; ; envido no_quiero` | AST generado con ronda vacía y mensaje de éxito | Coincide | Éxito |
+| `# Esto es un comentario \n truco quiero` | AST generado y mensaje de éxito (comentario ignorado) | Coincide | Éxito |
+| `envido    quiero    ;    truco    no_quiero` | AST generado y mensaje de éxito | Coincide | Éxito |
+| `envido quiero ; # otra ronda \n truco no_quiero` | AST generado y mensaje de éxito (comentario ignorado) | Coincide | Éxito |
+| `;` | AST de dos rondas vacías y mensaje de éxito | Coincide | Éxito |
+| `; ;` | AST de tres rondas vacías y mensaje de éxito | Coincide | Éxito |
+| `truco quiero ;` | AST con ronda vacía final y mensaje de éxito | Coincide | Éxito |
+| `; truco quiero` | AST con ronda vacía inicial y mensaje de éxito | Coincide | Éxito |
+| `truco quiero ; ; envido quiero` | AST con ronda vacía intermedia y mensaje de éxito | Coincide | Éxito |
+| `turco quiero` | Error léxico: 'turco' no reconocido | `[línea 1] Error léxico: Carácter o palabra no reconocida 'turco'` | Éxito |
+| `truco quierox` | Error léxico: 'quierox' no reconocido | `[línea 1] Error léxico: Carácter o palabra no reconocida 'quierox'` | Éxito |
+| `truco_quiero` | Error léxico: 'truco_quiero' no reconocido | `[línea 1] Error léxico: Carácter o palabra no reconocida 'truco_quiero'` | Éxito |
+| `real_envido envido quiero` | Error sintáctico: se esperaba `falta_envido` o respuesta | `[línea 1] Error sintáctico: Se esperaba falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'envido')` | Éxito |
+| `envido envido envido quiero` | Error sintáctico: se esperaba `real_envido`, `falta_envido` o respuesta | `[línea 1] Error sintáctico: Se esperaba real_envido, falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'envido')` | Éxito |
+| `falta_envido real_envido no_quiero` | Error sintáctico: se esperaba respuesta | `[línea 1] Error sintáctico: Se esperaba 'quiero' o 'no_quiero' (encontrado 'real_envido')` | Éxito |
+| `envido real_envido envido quiero` | Error sintáctico: se esperaba `falta_envido` o respuesta | `[línea 1] Error sintáctico: Se esperaba falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'envido')` | Éxito |
+| `retruco quiero` | Error sintáctico: tokens sobrantes | `[línea 1] Error sintáctico: Se esperaba fin de entrada pero hay tokens sobrantes (encontrado 'retruco')` | Éxito |
+| `vale_cuatro no_quiero` | Error sintáctico: tokens sobrantes | `[línea 1] Error sintáctico: Se esperaba fin de entrada pero hay tokens sobrantes (encontrado 'vale_cuatro')` | Éxito |
+| `truco vale_cuatro quiero` | Error sintáctico: se esperaba `retruco` o respuesta | `[línea 1] Error sintáctico: Se esperaba 'retruco' o respuesta ('quiero'/'no_quiero') (encontrado 'vale_cuatro')` | Éxito |
+| `truco retruco vale_cuatro vale_cuatro quiero` | Error sintáctico: se esperaba respuesta | `[línea 1] Error sintáctico: Se esperaba 'quiero' o 'no_quiero' (encontrado 'vale_cuatro')` | Éxito |
+| `truco truco quiero` | Error sintáctico: se esperaba `retruco` o respuesta | `[línea 1] Error sintáctico: Se esperaba 'retruco' o respuesta ('quiero'/'no_quiero') (encontrado 'truco')` | Éxito |
+| `truco retruco truco` | Error sintáctico: se esperaba `vale_cuatro` o respuesta | `[línea 1] Error sintáctico: Se esperaba 'vale_cuatro' o respuesta ('quiero'/'no_quiero') (encontrado 'truco')` | Éxito |
+| `truco` | Error sintáctico: se esperaba `retruco` o respuesta | `[línea 1] Error sintáctico: Se esperaba 'retruco' o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')` | Éxito |
+| `envido` | Error sintáctico: se esperaba continuación o respuesta | `[línea 1] Error sintáctico: Se esperaba envido, real_envido, falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')` | Éxito |
+| `truco retruco` | Error sintáctico: se esperaba `vale_cuatro` o respuesta | `[línea 1] Error sintáctico: Se esperaba 'vale_cuatro' o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')` | Éxito |
+| `envido envido` | Error sintáctico: se esperaba `real_envido`, `falta_envido` o respuesta | `[línea 1] Error sintáctico: Se esperaba real_envido, falta_envido o respuesta ('quiero'/'no_quiero') (encontrado 'EOF')` | Éxito |
 
-*Nota: El 'Estado' indica 'Éxito' si el analizador se comportó exactamente como se esperaba (aceptando entradas válidas y rechazando e identificando errores en las inválidas).* 
+*Nota: El 'Estado' indica 'Éxito' si el analizador se comportó exactamente como se esperaba (aceptando entradas válidas y rechazando e identificando errores en las inválidas).*
