@@ -32,3 +32,12 @@ para el parser.
 - `tests/` - Casos de prueba válidos e inválidos
 - `docs/` - Documentación e informes
 - `presentacion/` - Presentación para la exposición oral
+
+## Ejecución
+
+1. Clonar el repositorio.
+3. Ejecutar `python src/main.py` para el modo interactivo.
+   - Escribir la partida, se puede presionar Enter para escribir la partida en varias líneas, presionar Enter con una línea vacía ejecuta el programa.
+4. Opciones adicionales:
+   - `python src/main.py "truco quiero ; envido no_quiero"` (modo cadena directa).
+   - `python src/main.py --file tests/casos_validos.txt` (modo archivo).
