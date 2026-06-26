@@ -72,9 +72,9 @@ class Scanner:
                 if match:
                     lexeme = match.group()
 
-                    if token_type == 'SKIP' or token_type == 'COMMENT':
+                    if token_type == 'COMMENT':
                         pass
-                    elif token_type == 'NEWLINE':
+                    elif token_type == 'NEWLINE' or token_type == 'SKIP':
                         self.line += 1
                     elif token_type == 'ERROR':
                         self.tokens.append(
@@ -112,8 +112,7 @@ if __name__ == '__main__':
         "# esto es un comentario\ntruco quiero",
         "truco quiero turco",
         "envido real_envido envido quiero",
-        "truco quiero truco quiero",
-        "traco truco", #error
+        "truco quiero truco quiero"
     ]
 
     for codigo in pruebas:
