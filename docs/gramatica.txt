@@ -1,16 +1,17 @@
 Se definió una gramática libre de contexto (GLC) para el lenguaje de descripción de rondas de Truco, la cual se presenta a continuación. Formalmente, la gramática es la 4-tupla G=(V,,R,S), donde:
 S = PARTIDA
-V = {RONDA, ENVIDO, R1, R2, R3, RE, TRUCO, RT, RT1}
+V = {PARTIDA, RESTO_PARTIDA, RONDA, ENVIDO, R1, R2, R3, RE, TRUCO, RT, RT1}
 Σ = {envido, real_envido, falta_envido, truco, retruco, vale_cuatro, quiero, no_quiero, ;}
 
-PARTIDA → RONDA ( ";" RONDA)* ;
-RONDA → ENVIDO? TRUCO;
+PARTIDA → RONDA RESTO_PARTIDA?;
+RESTO_PARTIDA → “;” RONDA RESTO_PARTIDA?;
+RONDA → ENVIDO TRUCO | TRUCO;
 ENVIDO → "envido" R1 | "real_envido" R3 | "falta_envido" RE ;
 R1 → "envido" R2 | "real_envido" R3 | "falta_envido" RE | RE ;
 R2 → "real_envido" R3 | "falta_envido" RE | RE ;
 R3 →"falta_envido" RE | RE ;
 RE → "quiero" | "no_quiero" ;
-TRUCO → ( "truco" RT )? ;
+TRUCO → "truco" RT | ε ;
 RT → "retruco" RT1 | RE ;
 RT1 → "vale_cuatro" RE | RE ;
 
