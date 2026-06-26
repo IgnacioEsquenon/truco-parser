@@ -12,5 +12,5 @@ R3 →"falta_envido" RE | RE ;
 RE → "quiero" | "no_quiero" ;
 TRUCO → ( "truco" RT )? ;
 RT → "retruco" RT1 | RE ;
-RT1 → "vale_cuatro" RE | R ;
+RT1 → "vale_cuatro" RE | RE ;
 

@@ -53,24 +53,27 @@ class Parser:
 
     def check(self, type_: str) -> bool:
         """Devuelve True si el token actual es del tipo dado, sin consumirlo.
-        Los tokens de error léxico se tratan como un caso especial.
+        No maneja tokens de error; esa tarea corresponde a match().
         """
         if self.is_at_end():
-            return False
-        if self.peek() == 'ERROR':
-            self._handle_lexical_error()
             return False
         return self.peek() == type_
 
     def match(self, *types: str) -> Optional[Any]:
         """Si el token actual coincide con alguno de los tipos, lo consume y lo devuelve.
+        Antes de verificar, descarta cualquier token de error léxico que encuentre.
         Si no coincide, devuelve None y no consume nada.
         """
+        # Primero, descartar todos los tokens de error que haya por delante
+        while not self.is_at_end() and self.peek() == 'ERROR':
+            self._handle_lexical_error()
+
+        # Ahora verificar si el token actual coincide con alguno de los tipos esperados
         for type_ in types:
             if self.check(type_):
                 return self.advance()
         return None
-
+    
     def _handle_lexical_error(self) -> None:
         """Reporta un error léxico y descarta el token problemático."""
         token = self.tokens[self.current]
@@ -80,16 +83,27 @@ class Parser:
         self.advance()
 
     def error(self, message: str) -> None:
-        """Registra un error sintáctico y aplica modo pánico."""
+        """Registra un error sintáctico y aplica modo pánico.
+        Si el token actual es un error léxico, lo reporta como tal y sincroniza.
+        """
         token_error = self.tokens[self.current]
+        
+        # Si el token actual es un ERROR léxico, usamos el manejo específico
+        if token_error.type == 'ERROR':
+            self._handle_lexical_error()          # agrega el mensaje de error léxico
+            # Modo pánico: descartar tokens hasta encontrar un sincronizador
+            while not self.is_at_end() and self.peek() not in ('PUNTO_Y_COMA', 'EOF'):
+                self.advance()
+            # No consumir el sincronizador
+            return
+
         line = token_error.line if token_error else '?'
         found = token_error.lexeme if token_error and token_error.type != 'EOF' else 'EOF'
         self.errors.append(
             f"[línea {line}] Error sintáctico: {message} (encontrado '{found}')"
         )
 
-        # Modo pánico: descartar tokens hasta encontrar un sincronizador,
-        # pero sin consumirlo (se deja disponible para resto_partida)
+        # Modo pánico para errores sintácticos
         while not self.is_at_end() and self.peek() not in ('PUNTO_Y_COMA', 'EOF'):
             self.advance()
         # No consumir el sincronizador
