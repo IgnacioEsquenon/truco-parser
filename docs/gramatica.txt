@@ -3,10 +3,10 @@ S = PARTIDA
 V = {PARTIDA, RESTO_PARTIDA, RONDA, ENVIDO, R1, R2, R3, RE, TRUCO, RT, RT1}
 Σ = {envido, real_envido, falta_envido, truco, retruco, vale_cuatro, quiero, no_quiero, ;}
 
-PARTIDA → RONDA RESTO_PARTIDA?;
-RESTO_PARTIDA → “;” RONDA RESTO_PARTIDA?;
-RONDA → ENVIDO TRUCO | TRUCO;
-ENVIDO → "envido" R1 | "real_envido" R3 | "falta_envido" RE ;
+PARTIDA → RONDA RESTO_PARTIDA;
+RESTO_PARTIDA → “;” RONDA RESTO_PARTIDA | ε;
+RONDA → ENVIDO TRUCO | TRUCO
+ENVIDO → “envido” R1 | “real_envido” R3 | “falta_envido” RE ;
 R1 → "envido" R2 | "real_envido" R3 | "falta_envido" RE | RE ;
 R2 → "real_envido" R3 | "falta_envido" RE | RE ;
 R3 →"falta_envido" RE | RE ;
