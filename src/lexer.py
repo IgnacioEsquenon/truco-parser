@@ -72,9 +72,9 @@ class Scanner:
                 if match:
                     lexeme = match.group()
 
-                    if token_type == 'COMMENT':
+                    if token_type == 'COMMENT' or token_type == 'SKIP':
                         pass
-                    elif token_type == 'NEWLINE' or token_type == 'SKIP':
+                    elif token_type == 'NEWLINE' :
                         self.line += 1
                     elif token_type == 'ERROR':
                         self.tokens.append(
